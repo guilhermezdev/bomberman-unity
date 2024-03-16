@@ -8,7 +8,7 @@ public class PlaceBombController : MonoBehaviour
     public GameObject bombPrefab;
 
     public int bombsCount = 1;
-    public int bombFuseTime = 3;
+    public int bombFuseTime = 2;
     public int bombRadius = 1;
 
     private void Update()
@@ -35,6 +35,4 @@ public class PlaceBombController : MonoBehaviour
 
         Destroy(bomb);
     }
-
- 
 }

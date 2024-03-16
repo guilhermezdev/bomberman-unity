@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D body;
-    //private Collider2D collider;
     private Animator animator;
 
     public float runSpeed = 5.0f;
@@ -15,12 +14,15 @@ public class PlayerController : MonoBehaviour
     Vector2 moveDirection;
     Vector2 lastMoveDirection;
 
+    public float respawnTime = 2.0f;
+
+    private Vector2 initialPosition;
 
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-        //collider = GetComponent<Collider2D>();
         animator = GetComponentInChildren<Animator>();
+        initialPosition = transform.position;
     }
 
     void Update()
@@ -75,6 +77,19 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "Explosion")
         {
             animator.SetBool("isDead", true);
+            isActive = false;
+            StartCoroutine(RestartPlayer());
         }
+    }
+
+    private IEnumerator RestartPlayer()
+    {
+        yield return new WaitForSeconds(respawnTime);
+
+        isActive = true;
+        animator.SetBool("isDead", false);
+        moveDirection = Vector2.zero;
+        lastMoveDirection = Vector2.down;
+        transform.position = initialPosition;
     }
 }

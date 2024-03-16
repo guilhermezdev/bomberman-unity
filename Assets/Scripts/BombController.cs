@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.Tilemaps;
 
 public class BombController : MonoBehaviour
 {
@@ -9,9 +7,19 @@ public class BombController : MonoBehaviour
     public GameObject explosionMidPrefab;
     public GameObject explosionEndPrefab;
 
+    public GameObject brickDestroyPrefab;
+
     public LayerMask stageLayer;
 
+    private Tilemap destructibleTilemap;
+
     public int bombRadius = 1;
+
+    private void Start()
+    {
+        destructibleTilemap = GameObject.FindWithTag("Destructible").GetComponent<Tilemap>();
+        Debug.Log(destructibleTilemap);
+    }
 
     private void OnDestroy()
     {
@@ -34,6 +42,7 @@ public class BombController : MonoBehaviour
 
         if (Physics2D.OverlapBox(position, Vector2.one / 2.0f, 0f, stageLayer))
         {
+            DestroyTile(position);
             return;
         }
 
@@ -54,13 +63,22 @@ public class BombController : MonoBehaviour
         Instantiate(explosionPrefab, position, rotation);
     }
 
+    private void DestroyTile(Vector2 position)
+    {
+        Vector3Int cell = destructibleTilemap.WorldToCell(position);
+        TileBase tile = destructibleTilemap.GetTile(cell);
+
+        if(tile != null)
+        {
+            destructibleTilemap.SetTile(cell, null);
+            Instantiate(brickDestroyPrefab, position, Quaternion.identity);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.tag);
-        Debug.Log(collision.name);
         if(collision.tag == "Explosion")
         {
-            Debug.Log("abacate");
             Destroy(gameObject);
         }
     }
