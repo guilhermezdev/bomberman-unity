@@ -105,4 +105,12 @@ public class EnemyController : MonoBehaviour
         UpdateAnimation();
 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Explosion")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

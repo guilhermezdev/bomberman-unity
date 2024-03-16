@@ -1,37 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BombController : MonoBehaviour
 {
-    public GameObject bombPrefab;
+    public GameObject explosionCenterPrefab;
+    public GameObject explosionMidPrefab;
+    public GameObject explosionEndPrefab;
 
-    public int bombsCount = 1;
+    public LayerMask stageLayer;
 
-    public int bombFuseTime = 3;
+    public int bombRadius = 1;
 
-    private void Update()
+    private void OnDestroy()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && bombsCount > 0){
-            StartCoroutine(PlaceBomb());
+        Vector2 position = transform.position;
+
+        CreateExplosion(explosionCenterPrefab, position, Vector2.zero);
+        ExplodeBomb(position, Vector2.up, bombRadius);
+        ExplodeBomb(position, Vector2.down, bombRadius);
+        ExplodeBomb(position, Vector2.left, bombRadius);
+        ExplodeBomb(position, Vector2.right, bombRadius);
+    }
+    private void ExplodeBomb(Vector2 position, Vector2 direction, int length)
+    {
+        if (length == 0)
+        {
+            return;
         }
+
+        position += direction;
+
+        if (Physics2D.OverlapBox(position, Vector2.one / 2.0f, 0f, stageLayer))
+        {
+            return;
+        }
+
+        CreateExplosion(length > 1 ? explosionMidPrefab : explosionEndPrefab, position, direction);
+
+        ExplodeBomb(position, direction, length - 1);
+
     }
 
-    private IEnumerator PlaceBomb()
+    private void CreateExplosion(GameObject explosionPrefab, Vector2 position, Vector2 direction)
     {
-        bombsCount--;
-        Vector2 position = transform.position;
-        position.x = Mathf.Round(position.x);
-        position.y = Mathf.Round(position.y);
+        float angle = Mathf.Atan2(direction.y, direction.x);
 
-        GameObject bomb = Instantiate(bombPrefab, position, Quaternion.identity);
+        float angleDegrees = angle * Mathf.Rad2Deg;
 
-        yield return new WaitForSeconds(bombFuseTime);
+        Quaternion rotation = Quaternion.Euler(0, 0, angleDegrees);
 
-        bombsCount++;
+        Instantiate(explosionPrefab, position, rotation);
+    }
 
-        Destroy(bomb);
-
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.tag);
+        Debug.Log(collision.name);
+        if(collision.tag == "Explosion")
+        {
+            Debug.Log("abacate");
+            Destroy(gameObject);
+        }
     }
 }

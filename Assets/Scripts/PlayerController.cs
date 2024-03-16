@@ -67,17 +67,14 @@ public class PlayerController : MonoBehaviour
         if(collision.tag == "Bomb")
         {
             collision.isTrigger = false;
-                  animator.SetBool("isDead", true);
-
         }
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.collider.tag == "Bomb")
-    //    {
-    //        isActive = false;
-    //        animator.SetBool("isDead", true);
-    //    }
-    // }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Explosion")
+        {
+            animator.SetBool("isDead", true);
+        }
+    }
 }
