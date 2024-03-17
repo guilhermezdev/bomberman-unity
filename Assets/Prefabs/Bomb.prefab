@@ -191,6 +191,7 @@ MonoBehaviour:
   explosionMidPrefab: {fileID: 4580514010411075468, guid: 1092d2f8a94e1274a97b52de0b316592, type: 3}
   explosionEndPrefab: {fileID: 2404277960754225411, guid: 16c6697ea5faf9845b75f74efb3c0e31, type: 3}
   brickDestroyPrefab: {fileID: 8899868350884793222, guid: f94e78b83db7fdf4c89023631cd78d11, type: 3}
+  itemPrefab: {fileID: 1297112005199703420, guid: 69c2fad38bf5b334fa150f1e7ecc40cc, type: 3}
   stageLayer:
     serializedVersion: 2
     m_Bits: 256

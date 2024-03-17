@@ -18,12 +18,15 @@ public class BombController : MonoBehaviour
     private void Start()
     {
         destructibleTilemap = GameObject.FindWithTag("Destructible").GetComponent<Tilemap>();
-        Debug.Log(destructibleTilemap);
     }
 
     private void OnDestroy()
     {
         Vector2 position = transform.position;
+
+        position = new Vector2(Mathf.Round(position.x), Mathf.Round(position.y));
+
+        GameObject.FindWithTag("Player").GetComponent<PlaceBombController>().bombsCount++;
 
         CreateExplosion(explosionCenterPrefab, position, Vector2.zero);
         ExplodeBomb(position, Vector2.up, bombRadius);

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4005074103726144034}
   - component: {fileID: 2081327668787617425}
   - component: {fileID: 3336947453846782071}
+  - component: {fileID: -8445333476621603155}
   m_Layer: 0
   m_Name: BrickDestroy
   m_TagString: Untagged
@@ -122,3 +123,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 833bd7b732cd80243997ac0088cfbb5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8445333476621603155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8899868350884793222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 312761c219f90b04c96c85c94a26614c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSpawnChange: 0.2
+  items:
+  - {fileID: 832554193377999579, guid: edaa2ea15ad802f468b6117b0ee28522, type: 3}
+  - {fileID: 7805895695872746030, guid: 31738a67b504c1a47bc6c0a02dc063e6, type: 3}
+  - {fileID: 5479254374778890173, guid: afbc4576440029447973f867fc324db3, type: 3}
+  - {fileID: 791225940658826932, guid: d817c72f5b88bbb48b1f50a94f8469d3, type: 3}

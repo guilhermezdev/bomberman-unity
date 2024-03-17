@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: d8c21f6d5385e254fb4e98c18e43713a
+guid: 29b3bb338d82ba94b9560d63bd7b878e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3907448005587153712
-    second: ItemBlastRadius_0
+      213: -4047957744092437067
+    second: TimerBomb_0
+  - first:
+      213: -6004522077746961396
+    second: TimerBomb_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ItemBlastRadius_0
+      name: TimerBomb_0
       rect:
         serializedVersion: 2
         x: 0
@@ -127,8 +130,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0dc4ba0ddb4f5c9c0800000000000000
-      internalID: -3907448005587153712
+      spriteID: 5b52495f0e3c2d7c0800000000000000
+      internalID: -4047957744092437067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TimerBomb_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c04e6edcbf6abaca0800000000000000
+      internalID: -6004522077746961396
       vertices: []
       indices: 
       edges: []
@@ -136,7 +160,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e7335513db768af438f9dd18f7d7c6eb
     internalID: 0
     vertices: []
     indices: 
@@ -144,7 +168,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ItemBlastRadius_0: -3907448005587153712
+      TimerBomb_0: -4047957744092437067
+      TimerBomb_1: -6004522077746961396
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

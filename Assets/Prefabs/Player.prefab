@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 5
+  respawnTime: 2
 --- !u!50 &9144065124654138483
 Rigidbody2D:
   serializedVersion: 4
@@ -126,8 +127,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombPrefab: {fileID: 8282754356013184033, guid: 04d6d308b597a124aade03896c0de0fc, type: 3}
+  timerBombPrefab: {fileID: 6206123695997620216, guid: 6bc49ea7e69ada34bb521d115c003e66, type: 3}
   bombsCount: 1
   bombFuseTime: 5
+  bombRadius: 1
+  isTimerBombEnabled: 0
 --- !u!212 &503636487235768684
 SpriteRenderer:
   m_ObjectHideFlags: 0

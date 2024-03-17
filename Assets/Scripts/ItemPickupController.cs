@@ -9,6 +9,7 @@ public class ItemPickupController : MonoBehaviour
         ExtraBomb,
         BlastRadius,
         SpeedIncrease,
+        BombRemoteControl
     }
 
     public ItemType type;
@@ -25,6 +26,9 @@ public class ItemPickupController : MonoBehaviour
                 break;
             case ItemType.SpeedIncrease:
                 player.GetComponent<PlayerController>().runSpeed++;
+                break;
+            case ItemType.BombRemoteControl:
+                player.GetComponent<PlaceBombController>().isTimerBombEnabled = true;
                 break;
         }
     }
